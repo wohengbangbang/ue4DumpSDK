@@ -1,0 +1,217 @@
+TUObjectArray					// 对象数组
+  ↓
+FUObjectItem					// 对象列表
+  ↓
+UObject							// 对象
+  ↓
+UClass / UStruct					// 
+  ↓
+ChildProperties (FField)			// 下一成员
+  ↓
+FProperty						// 成员属性
+  ↓
+FFieldClass（类型					// 类型
+
+
+
+dumpUObject
++0x10 Class   → UClass*
++0x18 Name    → FName
++0x20 Outer   → UObject*
+
+
++0x40 SuperStruct      → 父类
++0x50 ChildProperties  → FField*
++0x58 PropertiesSize   → 类大小
+
+dumpFField
++0x8  Class   → FFieldClass*（类型！）
++0x20 Next    → 下一个属性
++0x28 Name    → FName（变量名）
+
+dumpFProperty
++0x3C ElementSize
++0x4C Offset（对象内偏移！！！）
+
+dumpClassFField
++0x0 name → FName（类型名）
+
+我这里面 
+object 0x10 == 对象是什么类型
+0x40 == 对象父类的指针
+0x50 == 下一成员的指针
+0x20 == 获取下一成员
+
+
+
+FFieldClass (元类)
+    ↑
+FField (基类)
+    ↑
+FProperty (属性基类)
+    ├── FStructProperty
+    ├── FObjectProperty
+    │   ├── FSoftObjectProperty
+    │   │   └── FSoftClassProperty
+    │   ├── FWeakObjectProperty
+    │   ├── FLazyObjectProperty
+    │   └── FClassProperty
+    ├── FByteProperty
+    ├── FBoolProperty
+    ├── FSetProperty
+    ├── FArrayProperty
+    ├── FMapProperty
+    ├── FEnumProperty
+    ├── FInterfaceProperty
+    └── FFieldPathProperty
+
+
+TUObjectArray (全局对象数组)
+    └── FUObjectItem (对象槽位)
+            └── UObject* (指向实际对象)
+
+
+
+
+498205 = ObjectIndex
+31626 = ObjectSerialNumber
+
+0x2237CCC7D30
+
+
+
+
+
+class UObject{
+	PVOID VTable;			// 虚表指针 +0x0       
+	UClass *ClassPrivate; 		// 当前对象的类型 +0x10
+	int32_t InternalIndex;   	// 对象在GUObjectArray中的序号
+	FName NamePrivate;		//对象的名字 +0x18
+	...
+	UClass *ClassPrivate;		// 对象的父类 +0x40
+} 
+
+
+
+class UField : public UObject{
+	UField *Next;		// 下一成员的指针 +0x20
+}
+
+
+
+
+
+
+
+
+
+UObject	内存中实际存在的对象	一辆真实的汽车
+UClass	描述对象有哪些属性、方法的"图纸"	汽车的设计图纸
+FField	图纸上的一条描述（属性、函数等）	图纸上的一个规格条目
+FProperty	专门描述"属性"的FField	图纸上的"颜色"规格
+FFieldClass	描述这个属性是什么类型（int、string等）	"颜色"这个规格是"字符串类型"
+
+
+
+
+背包数据
+初始化完成！
+0x00000291123713C0  Consumables
+    BP_HealthPackItem_C // 5
+    BP_Base_KeyItem_C // 2
+0x000002911237B840  Weapons
+    BP_Weapon_Katana_C // 1
+    BP_Weapon_SportingRifle_C // 1
+    BP_Weapon_Pistol_C // 1
+    BP_Weapon_EXP1_NamedCrossbow_V2_C // 1
+    BP_Weapon_Crossbow_C // 1
+    BP_Weapon_CompositeSledgehammer_C // 1
+    BP_Weapon_AutoCarbine_C // 1
+    BP_Weapon_Named_ExpansionKatana_C // 1
+    BP_Weapon_Pickaxe_C // 1
+    BP_Weapon_PremiumKatana_C // 1
+    BP_Weapon_EXP1_NamedCrossbow_C // 1
+    BP_Weapon_MeatHammer_C // 1
+    BP_Weapon_EXP1_NamedAxe_C // 1
+    BP_Weapon_Legendary_Bodycount_C // 1
+     // 0
+     // 0
+0x0000029112378E40  Recipes
+    RecipeActor // 1
+    RecipeActor // 1
+    RecipeActor // 1
+    RecipeActor // 1
+    RecipeActor // 1
+    RecipeActor // 1
+    RecipeActor // 1
+    RecipeActor // 1
+    RecipeActor // 1
+    RecipeActor // 1
+    RecipeActor // 1
+    RecipeActor // 1
+    RecipeActor // 1
+    RecipeActor // 1
+    RecipeActor // 1
+    RecipeActor // 1
+0x000002911237CF00  Special
+    BP_Weapon_BareHands_C // 1
+    BP_Weapon_FuryFists_C // 1
+    BP_CashItem_C // 83901
+0x0000029112376440  Ammo
+    BP_ShotgunAmmo_Item_C // 30
+    BP_HeavyRoundsAmmo_Item_C // 30
+    BP_CarbineAmmo_Item_C // 90
+    BP_PistolAmmo_Item_C // 65
+    BP_NailgunNailsAmmo_Item_C // 60
+    BP_CrossbowBoltsAmmo_Item_C // 15
+     // 0
+0x00000291123798C0  KeyItems
+0x00000291123744C0  Collectable
+0x0000029112370CC0  Throwables
+    BP_Weapon_MeatBait_C // 1
+    BP_Weapon_Shuriken_C // 1
+    BP_Weapon_ChemBomb_C // 1
+    BP_Weapon_PipeBomb_C // 1
+    BP_Weapon_ElectricStar_C // 1
+    BP_Weapon_MolotovCocktail_C // 1
+    BP_Weapon_Flashbang_C // 1
+    BP_Weapon_StickyBomb_C // 1
+    BP_Weapon_NailBomb_C // 1
+    BP_Weapon_BaitBomb_C // 1
+     // 0
+     // 0
+     // 0
+     // 0
+0x000002911237A500  Ingredients
+    BP_ItemActor_Ingredients_Fasteners_C // 99
+    BP_ItemActor_Ingredients_Scrap_C // 99
+    BP_ItemActor_Ingredients_Aerosol_C // 99
+    BP_ItemActor_Ingredients_Alloy_C // 99
+    BP_ItemActor_Ingredients_MetalParts_C // 99
+    BP_ItemActor_Ingredients_Fabric_C // 99
+    BP_ItemActor_Ingredients_Wire_C // 99
+    BP_ItemActor_Ingredients_Adhesive_C // 93
+    BP_ItemActor_Ingredients_Blades_C // 99
+    BP_ItemActor_Ingredients_Electronics_C // 62
+    BP_ItemActor_Ingredients_Chemicals_C // 99
+    BP_ItemActor_Ingredients_SyntheticFibres_C // 99
+    BP_ItemActor_Ingredients_Gunpowder_C // 61
+    BP_ItemActor_ExoticMaterials_BloatedSpleen_C // 49
+    BP_ItemActor_ExoticMaterials_ToxicGallbladder_C // 11
+    BP_ItemActor_ExoticMaterials_CorrosiveFluid_C // 20
+    BP_ItemActor_ExoticMaterials_InfectedSpine_C // 13
+    BP_ItemActor_ExoticMaterials_DamagedImplants_C // 69
+    BP_ItemActor_ExoticMaterials_InfectedFlesh_C // 70
+    BP_ItemActor_ExoticMaterials_OversizedArmBone_C // 35
+    BP_ItemActor_ExoticMaterials_InfectedSinew_C // 8
+    BP_ItemActor_ExoticMaterials_BlastGland_C // 37
+    BP_ItemActor_ExoticMaterials_CombustibleFluid_C // 6
+    BP_ItemActor_ExoticMaterials_ScreamerLungs_C // 4
+    BP_ItemActor_ExoticMaterials_InfectedBlood_C // 9
+    BP_ItemActor_ExoticMaterials_InsectLarva_C // 7
+    BP_ItemActor_ExoticMaterials_ElectrifiedBrain_C // 6
+    BP_ItemActor_ExoticMaterials_RegeneratingTissue_C // 6
+    BP_ItemActor_ExoticMaterials_BladeArm_C // 8
+    BP_ItemActor_ExoticMaterials_MutatedHeart_C // 3
+
+

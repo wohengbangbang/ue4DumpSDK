@@ -1,0 +1,154 @@
+GName地址，存储游戏引擎中所有的对象类名名称 对应一个对象id
+
+4.23以下（旧版）以上新版
+
+
+搜索ByteProperty
+找GName
+1.地址 - 8 = 0000就是我们需要的地址
+
+2.然后用这个地址8字节16进制扫描
+
+======反推过程======
+-10h -8h -4h
+
+
+1B5252E0008
+1B532F60008
+
+
+"EOSSDK-Win64-Shipping.dll"+11644980 - 10h 就是我们这个游戏的GName
+
+
+找UWorld
+UWorld -> 对象数组
+1.找世界对象数组个数 
+2.判断是不是数组指针
+
+// 可能是Gworld
+0x1C3678F2258
+0x1C2F3DDAC50
+
+// 访问Gworld
+
+"DeadIsland-Win64-Shipping.exe"+258FE15 - 48 89 0D ECD33A04     - mov ["DeadIsland-Win64-Shipping.exe"+693D208],rcx { (1C3678F0020) }
+
+DeadIsland-Win64-Shipping.exe"+256BD96 - 48 8B 43 08           - mov rax,[rbx+08]
+rbx = 0x1C4272E0310
+
+
+"DeadIsland-Win64-Shipping.exe"+256BDA4 - 3B B0 38220000        - cmp esi,[rax+00002238] { 这里可能是访问Gworld的地方
+ } rax = 0x1C3678F0020
+
+
+
+
+=================================
+
+2.2通过IDA pro 找Uworld
+
+2.2.1 使用Scylla_x64 dump 游戏进程文件，使用ida pro进行分析 查字符串 "SeamlessTravel Flushlevelstreaming"
+
+
+
+2.3使用IDA 找GameInstance.Ulevel.Actor
+InWorld->GetGameInstance() is null
+
++0x30 ULevel
+
+
+
+
+==============================
+==============================
+
+1.找GetName函数
+在Engine/Source/Runtime/CoreUObject/Public/UObject/UObjetBaseUtility.h 搜索GetName
+
+class COREUOBJECT_API UObjectBaseUtility : public UObjectBase
+{
+	/**
+	 * Returns the name of this object (with no path information)
+	 * 
+	 * @return Name of the object.
+	 */
+	FORCEINLINE FString GetName() const
+	{
+		return GetFName().ToString();
+	}
+}
+
+class CORE_API FString
+{
+	typedef TArray<TCHAR> DataType;
+	DataType Data;
+}
+
+
+class TArray
+{
+	ElementAllocatorType AllocatorInstance;
+	SizeType ArrayNum;
+	SizeType ArrayMax;
+}
+
+
+学习FUObjectArray的结构
+通过IDA用多种方法找到GObject基址
+GObject = FUObjectArray
+
+FUObjectArray + 0x10的偏移 = ObjObjects;
+这里可以通过成员函数找，因为成员函数都有一个this指针，这个this指针就是这个类的首地址
+
+qword_7FF774BB8680 - modelBase = 0x6D28680;
+
+
+CE 分析GObject数据结构
+GObject->Object 
+
+UObjectBase层级父目录信息
+
+要dump的格式 [地址] 类型 父目录 名称
+
+class xxx: public Object{
+（第一个成员）类型 成员名称 // 偏移 大小;
+（第二个成员）类型 成员名称 // 偏移 大小;
+}
+
+类属性偏移 class 地址下的 成员偏移
+ 第一个指针偏移+0x50
+ 下一个指针偏移+0x20 ...
+类的大小            +0x58
+
+类型偏移
++0x70
+成员名称的偏移
++0x50
++0x18
+
+
+我们已经dump完ue4的class sdk
+World：世界
+Level：关卡
+Actor：对象
+
+通过ida找GWorld ----No world was found for object (%s) passed in to UEngine::GetWorldFromContextObject(). 关键字符串
+
+7FF774D3D848 - 模块基地址 0x7FF76DE90000 = 偏移 0x6EAD848
+我们要找UWorld，其实GWorld就存储着一个UWorld指针
+Acotr 对象在 ULevel下的0xA8偏移处
+
+level对象下的Actor
+Tarray{
+	数组指针
+	当前数量
+	最大数量
+}
+
+ue4 4.23.0 - 5 通用矩阵特征码 
+00 00 00 00 00 00 00 00 00 00 80 3F 00 00 80 3F 00 00 80 3F 00 00 80 3F 00 00 00 00 00 00 00 00 00 00 80 3F 00 00 00 00 00 00 00 00 00 00 80 3F 00 00 80 3F 00 00 00 00
+
+
+
+
+
