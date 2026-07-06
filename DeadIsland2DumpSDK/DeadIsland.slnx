@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="DeadIsland/DeadIsland.vcxproj" Id="07ff29ae-eecd-4652-99c0-2015811a28e0" />
+</Solution>

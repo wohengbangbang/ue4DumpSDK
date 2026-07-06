@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="osImGui">
+      <UniqueIdentifier>{3b5e5d21-67bd-45d0-965b-02ecefda3461}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="osImGui\minHook">
+      <UniqueIdentifier>{6a4c9889-8aef-40a6-a686-f7613e5aa075}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="osImGui\imgui">
+      <UniqueIdentifier>{b6e250af-cd54-4781-a5a4-ea8b4e4ad6a5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ue4.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="gameData.h">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="tools.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="gameData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\Minhook\buffer.c">
+      <Filter>osImGui\minHook</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\Minhook\hde32.c">
+      <Filter>osImGui\minHook</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\Minhook\hde64.c">
+      <Filter>osImGui\minHook</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\Minhook\hook.c">
+      <Filter>osImGui\minHook</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\Minhook\trampoline.c">
+      <Filter>osImGui\minHook</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\imgui\imgui.cpp">
+      <Filter>osImGui\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\imgui\imgui_demo.cpp">
+      <Filter>osImGui\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\imgui\imgui_draw.cpp">
+      <Filter>osImGui\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\imgui\imgui_impl_dx9.cpp">
+      <Filter>osImGui\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\imgui\imgui_impl_dx11.cpp">
+      <Filter>osImGui\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\imgui\imgui_impl_win32.cpp">
+      <Filter>osImGui\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\imgui\imgui_tables.cpp">
+      <Filter>osImGui\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\imgui\imgui_widgets.cpp">
+      <Filter>osImGui\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\OS-ImGui.cpp">
+      <Filter>osImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\OS-ImGui_Base.cpp">
+      <Filter>osImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\OS-ImGui_External.cpp">
+      <Filter>osImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="OSImGui\OS-ImGui_Internal.cpp">
+      <Filter>osImGui</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="tools.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ue4.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\Minhook\buffer.h">
+      <Filter>osImGui\minHook</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\Minhook\hde32.h">
+      <Filter>osImGui\minHook</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\Minhook\hde64.h">
+      <Filter>osImGui\minHook</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\Minhook\MinHook.h">
+      <Filter>osImGui\minHook</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\Minhook\pstdint.h">
+      <Filter>osImGui\minHook</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\Minhook\table32.h">
+      <Filter>osImGui\minHook</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\Minhook\table64.h">
+      <Filter>osImGui\minHook</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\Minhook\trampoline.h">
+      <Filter>osImGui\minHook</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\imgui\imconfig.h">
+      <Filter>osImGui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\imgui\imgui.h">
+      <Filter>osImGui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\imgui\imgui_impl_dx9.h">
+      <Filter>osImGui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\imgui\imgui_impl_dx11.h">
+      <Filter>osImGui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\imgui\imgui_impl_win32.h">
+      <Filter>osImGui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\imgui\imgui_internal.h">
+      <Filter>osImGui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\imgui\imstb_rectpack.h">
+      <Filter>osImGui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\imgui\imstb_textedit.h">
+      <Filter>osImGui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\imgui\imstb_truetype.h">
+      <Filter>osImGui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\OS-ImGui.h">
+      <Filter>osImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\OS-ImGui_Base.h">
+      <Filter>osImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\OS-ImGui_Exception.hpp">
+      <Filter>osImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\OS-ImGui_External.h">
+      <Filter>osImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\OS-ImGui_Internal.h">
+      <Filter>osImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="OSImGui\OS-ImGui_Struct.h">
+      <Filter>osImGui</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OSImGui\Minhook\MinHook.def">
+      <Filter>osImGui\minHook</Filter>
+    </None>
+  </ItemGroup>
+</Project>
