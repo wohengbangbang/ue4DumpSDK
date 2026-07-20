@@ -5,7 +5,8 @@
 
 
 
-<video width="1920" height="1080" controls>     <source src="sp.mp4" type="video/mp4"> </video>
+[![点击观看视频演示](https://i1.hdslb.com/bfs/archive/8d5277a3f817ceec80c9c2f1ead4f7623fa6b138.jpg@672w_378h_1c.avif)](https://www.bilibili.com/video/BV1F3KU6QE51)
+
 
 dump结构：
 
